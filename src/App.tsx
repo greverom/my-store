@@ -1,6 +1,6 @@
 
 import './App.css'
-import ProductList from './components/ui/productList'
+import ProductList from './components/product/productList'
 import GlobalStyles from './styles/global'
 
 function App() {
