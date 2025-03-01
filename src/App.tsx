@@ -1,6 +1,6 @@
 
 import './App.css'
-import ProductList from './components/product/productList'
+import Home from './pages/home'
 import GlobalStyles from './styles/global'
 
 function App() {
@@ -8,8 +8,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <h1>🛍️ Mi Tienda Online</h1>
-      <ProductList />
+        <Home/>
     </>
   )
 }

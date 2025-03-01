@@ -1,7 +1,8 @@
-import   useProducts from "../../hooks/useProducts";
-import { Product } from "../../interface/products";
-import   ProductCard from "./productCard";
-import { ProductListContainer } from "../../styles/productList.styles";
+import   useProducts from "../hooks/useProducts";
+import { Product } from "../interface/products";
+import   ProductCard from "../components/product/productCard";
+import { ProductListContainer } from "../styles/productList.styles";
+import Loading from "../components/ui/loading";
 
 const ProductList = () => {
   const { products, loading, error } = useProducts();
@@ -10,7 +11,7 @@ const ProductList = () => {
     console.log("Producto agregado al carrito:", product);
   };
 
-  if (loading) return <p>⏳ Cargando productos...</p>;
+  if (loading) return <Loading/>;
   if (error) return <p>❌ {error}</p>;
 
   return (
