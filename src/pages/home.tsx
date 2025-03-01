@@ -1,11 +1,13 @@
-import ProductList from "./productList";
+import { HomeContainer, Subtitle } from "../styles/home.style";
+import { Title } from "../styles/shopping.style";
+
 
 const Home = () => {
   return (
-    <div>
-      <h1>🛍️ Bienvenido a la Tienda</h1>
-      <ProductList />
-    </div>
+    <HomeContainer>
+    <Title>🛍️ Bienvenido a la Tienda 🛍️</Title>
+    <Subtitle>Explora nuestra colección y encuentra lo que buscas.</Subtitle>
+  </HomeContainer>
   );
 };
 

@@ -3,7 +3,7 @@ import   Button from "../ui/button";
 import { ProductImage, ProductTitle, ProductPrice, 
          ProductCardContainer, ButtonWrapper, 
          CartIcon,
-         ProductImageWrapper} from "../../styles/productList.styles";
+         ProductImageWrapper} from "../../styles/product.style";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   return (

@@ -1,14 +1,14 @@
-
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
-import Home from './pages/home'
-import GlobalStyles from './styles/global'
+import Layout from './components/layout/layout'
 
 function App() {
 
   return (
     <>
-      <GlobalStyles />
-        <Home/>
+      <BrowserRouter>  
+        <Layout />
+      </BrowserRouter>
     </>
   )
 }

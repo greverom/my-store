@@ -1,8 +1,8 @@
-import   useProducts from "../hooks/useProducts";
-import { Product } from "../interface/products";
-import   ProductCard from "../components/product/productCard";
-import { ProductListContainer } from "../styles/productList.styles";
-import Loading from "../components/ui/loading";
+import   useProducts from "../../hooks/useProducts";
+import { Product } from "../../interface/products";
+import   ProductCard from "./productCard";
+import { ProductListContainer } from "../../styles/product.style";
+import Loading from "../ui/loading";
 
 const ProductList = () => {
   const { products, loading, error } = useProducts();
