@@ -70,8 +70,8 @@ export const CardButton = styled(Button)`
   background-color: transparent; 
   
 &:hover {
-    background-color: transparent; /* ✅ Mantener el color sin cambios */
-    transform: none; /* ✅ Evitar efectos de escalado */
+    background-color: transparent; 
+    transform: none; 
   }
 
   svg {
