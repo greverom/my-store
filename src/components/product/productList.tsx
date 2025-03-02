@@ -5,14 +5,13 @@ import { ProductListContainer } from "../../styles/product.style";
 import Loading from "../ui/loading";
 
 const ProductList = () => {
-  const { products, loading, error } = useProducts();
+  const { products, loading} = useProducts();
 
   const handleAddToCart = (product: Product) => {
     console.log("Producto agregado al carrito:", product);
   };
 
   if (loading) return <Loading/>;
-  if (error) return <p>❌ {error}</p>;
 
   return (
     <ProductListContainer>

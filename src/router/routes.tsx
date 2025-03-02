@@ -3,6 +3,7 @@ import Loading from "../components/ui/loading";
 import { AppRoute } from "./type";
 import Home from "../pages/home";
 import Shopping from "../pages/shopping";
+import Categories from "../pages/categories";
 
 
 const withSuspense = (Component: ReactElement) => (
@@ -17,5 +18,9 @@ export const appRoutes: AppRoute[] = [
   {
     path: "/shopping",
     element: withSuspense(<Shopping />),
+  },
+  {
+    path: "/categories",
+    element: withSuspense(<Categories />),
   }
 ];

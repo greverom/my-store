@@ -20,7 +20,34 @@ export interface SidebarLink {
       path: "/shopping",
       icon: ShoppingIcon,
     },
-   
+    {
+      title: "Categorías",
+      path: "/categories",
+      icon: ShoppingIcon,
+      subMenu: [
+        {
+          title: "Electronics",
+          path: "/categories?name=electronics",
+          icon: ShoppingIcon,
+        },
+        {
+          title: "Jewelry",
+          path: "/categories?name=jewelery",
+          icon: ShoppingIcon,
+        },
+        {
+          title: "Men's Clothing",
+          path: "/categories?name=men's clothing",
+          icon: ShoppingIcon,
+        },
+        {
+          title: "Women's Clothing",
+          path: "/categories?name=women's clothing",
+          icon: ShoppingIcon,
+        }
+      ],
+    },
+
     {
       title: "Salir",
       path: "#", 
