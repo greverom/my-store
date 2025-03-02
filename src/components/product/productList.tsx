@@ -1,8 +1,8 @@
-import   useProducts from "../../hooks/useProducts";
+import   useProducts from "../../hooks/Product/useProducts";
 import { Product } from "../../interface/products";
 import   ProductCard from "./productCard";
 import { ProductListContainer } from "../../styles/product.style";
-import Loading from "../ui/loading";
+import   Loading from "../ui/loading";
 
 const ProductList = () => {
   const { products, loading} = useProducts();

@@ -1,9 +1,9 @@
-import { FaShoppingCart } from "react-icons/fa";
 import styled from "styled-components";
+import Button from "../components/ui/button";
 
 export const ProductListContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
 `;
@@ -27,7 +27,7 @@ export const ProductCardContainer = styled.div`
 `;
 
 export const ProductImageWrapper = styled.div`
-  width: 54%;
+  width: 70%;
   margin: auto;
   height: 180px;
   border-radius: 5px;
@@ -41,7 +41,7 @@ export const ProductImage = styled.img`
 `;
 
 export const ProductTitle = styled.h3`
-  font-size: 16px;
+  font-size: 13px;
   margin: 10px 0;
   overflow: hidden;
   display: -webkit-box;
@@ -53,7 +53,7 @@ export const ProductTitle = styled.h3`
 export const ProductPrice = styled.p`
   font-size: 18px;
   text-align: left;
-  color: #007bff;
+  color:rgb(84, 84, 84);
   font-weight: bold;
   margin-top: auto; 
 `;
@@ -62,8 +62,22 @@ export const ButtonWrapper = styled.div`
   margin-top: 10px;
 `;
 
-export const CartIcon = styled(FaShoppingCart)`
-  margin-right: 12px; 
-  font-size: 16px; 
-  color: white; 
+export const CardButton = styled(Button)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: transparent; 
+  
+&:hover {
+    background-color: transparent; /* ✅ Mantener el color sin cambios */
+    transform: none; /* ✅ Evitar efectos de escalado */
+  }
+
+  svg {
+    width: 22px;
+    height: 22px;
+    fill: grey; 
+  }
 `;
+

@@ -2,8 +2,8 @@ import { ProductCardProps } from "../../interface/productCardProps";
 import   Button from "../ui/button";
 import { ProductImage, ProductTitle, ProductPrice, 
          ProductCardContainer, ButtonWrapper, 
-         CartIcon,
          ProductImageWrapper} from "../../styles/product.style";
+import { CartIcon } from "../../assets/icons/icons";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   return (
