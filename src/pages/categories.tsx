@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Container, Title } from "../styles/shopping.style"; 
 import { ProductListContainer, ProductCardContainer, ProductImageWrapper, ProductImage, ProductTitle, ProductPrice, ProductInfo, CartIconWrapper } from "../styles/product.style";
 import { useProductsByCategory } from "../hooks/Product/useProductByCategory";
+import { useProductModal } from "../hooks/Product/useProductModal";
 import Loading from "../components/ui/loading";
 import { Subtitle } from "../styles/home.style";
-import { Product } from "../interface/products";
 import { CartIcon } from "../assets/icons/icons";
 import ProductDetailModal from "../components/product/productDeatilModal";
 
@@ -14,25 +13,7 @@ const Categories = () => {
   const categoryName = searchParams.get("name");
 
   const { products, loading, error } = useProductsByCategory(categoryName || "");
-
-  // Estado para manejar el modal y el producto seleccionado
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-
-  const handleOpenModal = (product: Product) => {
-    if (isModalOpen || selectedProduct?.id === product.id) return; 
-    setSelectedProduct(product);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setTimeout(() => setSelectedProduct(null), 300);
-  };
-
-  const handleAddToCart = (product: Product) => {
-    console.log("Producto agregado al carrito:", product);
-  };
+  const { isModalOpen, selectedProduct, handleOpenModal, handleCloseModal, handleAddToCart } = useProductModal();
 
   return (
     <>
