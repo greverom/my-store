@@ -1,24 +1,24 @@
 import styled from "styled-components";
-import Button from "../components/ui/button";
 
 export const ProductListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  gap: 30px;
+  padding: 20px auto;
 `;
 
 export const ProductCardContainer = styled.div`
   display: flex;
   background: white;
   border-radius: 8px;
+  border: 1px solid rgb(227, 227, 227);
   overflow: hidden;
   height: 100%; 
-  padding: 15px;
+  padding: 5px 20px;
   text-align: center;
   flex-direction: column;
   justify-content: space-between; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease-in-out;
 
   &:hover {
@@ -37,7 +37,7 @@ export const ProductImageWrapper = styled.div`
 export const ProductImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 export const ProductTitle = styled.h3`
@@ -50,34 +50,34 @@ export const ProductTitle = styled.h3`
   text-overflow: ellipsis;
 `;
 
+export const ProductInfo = styled.div`
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+
+`;
+
 export const ProductPrice = styled.p`
-  font-size: 18px;
-  text-align: left;
-  color:rgb(84, 84, 84);
+  font-size: 16px;
+  color: rgb(84, 84, 84);
   font-weight: bold;
-  margin-top: auto; 
 `;
 
-export const ButtonWrapper = styled.div`
-  margin-top: 10px;
-`;
-
-export const CardButton = styled(Button)`
+export const CartIconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  background-color: transparent; 
-  
-&:hover {
-    background-color: transparent; 
-    transform: none; 
-  }
+  cursor: pointer;
 
   svg {
     width: 22px;
     height: 22px;
-    fill: grey; 
+    fill: rgb(84, 84, 84);
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
   }
 `;
-

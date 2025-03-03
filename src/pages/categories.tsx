@@ -1,12 +1,11 @@
 import { useSearchParams } from "react-router-dom";
 import { Container, Title } from "../styles/shopping.style"; 
-import { ProductListContainer, ProductCardContainer, ProductImageWrapper, ProductImage, ProductTitle, ProductPrice } from "../styles/product.style";
+import { ProductListContainer, ProductCardContainer, ProductImageWrapper, ProductImage, ProductTitle, ProductPrice, ProductInfo, CartIconWrapper } from "../styles/product.style";
 import { useProductsByCategory } from "../hooks/Product/useProductByCategory";
 import Loading from "../components/ui/loading";
 import { Subtitle } from "../styles/home.style";
 import { Product } from "../interface/products";
 import { CartIcon } from "../assets/icons/icons";
-import Button from "../components/ui/button";
 
 const Categories = () => {
   const [searchParams] = useSearchParams();
@@ -33,10 +32,12 @@ const Categories = () => {
                 <ProductImage src={product.image} alt={product.title} />
               </ProductImageWrapper>
               <ProductTitle>{product.title}</ProductTitle>
-              <ProductPrice>💲{product.price.toFixed(2)}</ProductPrice>
-              <Button variant="primary" onClick={() => handleAddToCart(product)}>
-                <CartIcon />
-              </Button>
+              <ProductInfo>
+                <ProductPrice>💲{product.price.toFixed(2)}</ProductPrice>
+                <CartIconWrapper onClick={() => handleAddToCart(product)}>
+                  <CartIcon />
+                </CartIconWrapper>
+              </ProductInfo>
             </ProductCardContainer>
           ))}
         </ProductListContainer>
