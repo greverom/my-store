@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ProductCardProps } from "../../interface/productCardProps";
+import { ProductCardProps } from "../../interface/products";
 import { 
           ProductImage, ProductTitle, ProductPrice, 
           ProductCardContainer, ProductImageWrapper,

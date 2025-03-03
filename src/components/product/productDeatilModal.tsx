@@ -1,18 +1,10 @@
 import Modal from "react-modal";
-import { Product } from "../../interface/products";
+import { ProductDetailModalProps } from "../../interface/products";
 import {
   ModalContent, ImageContainer, ProductImage,
   DetailsContainer, ProductTitle, ProductPrice, ProductDescription,
   ProductOptions, CloseButton, ModalStyles
 } from "../../styles/productDetailModal";
-
-interface ProductDetailModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  product: Product | null;
-  style?: ReactModal.Styles; 
-  onAddToCart: (product: Product) => void;
-}
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({onAddToCart, isOpen, onClose, product, style = ModalStyles }) => {
   if (!product) return null;

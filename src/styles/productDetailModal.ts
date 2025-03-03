@@ -34,7 +34,7 @@ export const ModalContent = styled.div`
   background: white;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   position: relative;
   outline: none;
 `;
