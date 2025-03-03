@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { ProductCardProps } from "../../interface/productCardProps";
 import { 
-  ProductImage, ProductTitle, ProductPrice, 
-  ProductCardContainer, ProductImageWrapper,
-  ProductInfo, CartIconWrapper
-} from "../../styles/product.style";
+          ProductImage, ProductTitle, ProductPrice, 
+          ProductCardContainer, ProductImageWrapper,
+          ProductInfo, CartIconWrapper} from "../../styles/product.style";
 import { CartIcon } from "../../assets/icons/icons";
 import ProductDetailModal from "./productDeatilModal";
 
