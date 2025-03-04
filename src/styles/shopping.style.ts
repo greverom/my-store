@@ -3,7 +3,7 @@ import { styled } from "styled-components";
  export const Container = styled.div`
   padding: 20px;
   text-align: center;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
 `;
 

@@ -104,8 +104,6 @@ export const ProductOptions = styled.div`
         transform: scale(1.05);
       }
     }
-
-
   }
 `;
 
