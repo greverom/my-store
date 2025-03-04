@@ -15,7 +15,7 @@ const CartList = () => {
                   onDecrease={decreaseQuantity}
                   onRemove={removeFromCart} />)
       ) : (
-        <EmptyMessage>🛒 Tu carrito está vacío</EmptyMessage>
+        <EmptyMessage>Tu carrito está vacío</EmptyMessage>
       )}
     </CartListContainer>
   );

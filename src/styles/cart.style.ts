@@ -20,38 +20,16 @@ export const CartItemDetails = styled.div`
 `;
 
 export const CartItemTitle = styled.h4`
-  font-size: 14px;
+  font-size: 12px;
+  text-align: left;
   margin: 0;
-  color: #333;
 `;
 
 export const CartItemPrice = styled.p`
-  font-size: 14px;
-  color: #007bff;
+  font-size: 12px;
+  text-align: left;
   margin: 5px 0 0;
 `;
-
-export const DeleteButton = styled.button`
-  background: #ff0000; 
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease-in-out;
-
-  &:hover {
-    background: #cc0000;
-  }
-
-  svg {
-    font-size: 16px;
-  }
-`;
-
 
 export const CartListContainer = styled.div`
   display: flex;
@@ -62,7 +40,7 @@ export const CartListContainer = styled.div`
 
 export const EmptyMessage = styled.p`
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   color: #777;
   margin-top: 20px;
 `;
@@ -74,7 +52,6 @@ export const QuantityControls = styled.div`
   gap: 10px;
 `;
 
-// Botón de cantidad
 export const QuantityButton = styled.button`
   width: 30px;
   height: 30px;
@@ -89,12 +66,61 @@ export const QuantityButton = styled.button`
     background: #ff6600;
   }
   svg {
-    font-size: 14px;
+    font-size: 13px;
   }
 `;
 
-// Texto de cantidad
 export const QuantityText = styled.span`
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
+`;
+
+
+export const CartIconContainer = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+export const CartIconStyled = styled.div`
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: #ff9900;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      fill: #ff6600;
+    }
+  }
+`;
+
+export const CartBadge = styled.span`
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: grey;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const CartHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  padding: 10px;
 `;
