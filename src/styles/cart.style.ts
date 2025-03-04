@@ -31,15 +31,24 @@ export const CartItemPrice = styled.p`
   margin: 5px 0 0;
 `;
 
-export const RemoveButton = styled.button`
-  background: none;
+export const DeleteButton = styled.button`
+  background: #ff0000; 
+  color: white;
   border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
-  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease-in-out;
 
   &:hover {
-    color: darkred;
+    background: #cc0000;
+  }
+
+  svg {
+    font-size: 16px;
   }
 `;
 
@@ -58,21 +67,6 @@ export const EmptyMessage = styled.p`
   margin-top: 20px;
 `;
 
-export const ClearCartButton = styled.button`
-  display: block;
-  margin: 0 auto 20px;
-  padding: 10px 15px;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-
-  &:hover {
-    background-color: #cc0000;
-  }
-`;
 
 export const QuantityControls = styled.div`
   display: flex;
@@ -93,6 +87,9 @@ export const QuantityButton = styled.button`
 
   &:hover {
     background: #ff6600;
+  }
+  svg {
+    font-size: 14px;
   }
 `;
 

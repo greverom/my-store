@@ -1,8 +1,7 @@
 import { useState, ReactNode } from "react";
-import { Product } from "../interface/products";
+import { Product } from "../../interface/products";
 import { CartContext } from "./cartContext";
 
-// Provider del contexto
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Product[]>([]);
 
@@ -21,38 +20,33 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  // Remover un producto completamente del carrito
-  const removeFromCart = (id: number) => {
-    setCart((prevCart) => prevCart.filter((product) => product.id !== id));
-  };
-
   // Incrementar cantidad de un producto en el carrito
   const increaseQuantity = (id: number) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
         item.id === id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
-      )
-    );
-  };
+    )
+  );
+};
 
-  // Disminuir cantidad de un producto, si llega a 1 lo elimina
-  const decreaseQuantity = (id: number) => {
+// Disminuir cantidad de un producto, si llega a 1 lo elimina
+const decreaseQuantity = (id: number) => {
     setCart((prevCart) =>
       prevCart
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity && item.quantity > 1 ? item.quantity - 1 : 1 } : item
-        )
-        .filter((item) => item.quantity && item.quantity > 0) 
-    );
-  };
+    .map((item) =>
+      item.id === id ? { ...item, quantity: item.quantity && item.quantity > 1 ? item.quantity - 1 : 1 } : item
+  )
+  .filter((item) => item.quantity && item.quantity > 0) 
+  );
+};
 
-  // Vaciar todo el carrito
-  const clearCart = () => {
-    setCart([]);
-  };
+// Remover un producto completamente del carrito
+  const removeFromCart = (id: number) => {
+    setCart((prevCart) => prevCart.filter((product) => product.id !== id));
+};
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity }}>
       {children}
     </CartContext.Provider>
   );
