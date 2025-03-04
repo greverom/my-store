@@ -1,4 +1,4 @@
-import { HomeIcon, LogoutIcon, ShoppingIcon } from "../../../assets/icons/icons";
+import { CartIcon, HomeIcon, LogoutIcon, ShoppingIcon } from "../../../assets/icons/icons";
 
 export interface SidebarLink {
     title: string;
@@ -19,6 +19,11 @@ export interface SidebarLink {
       title: "Shopping",
       path: "/shopping",
       icon: ShoppingIcon,
+    },
+    {
+      title: "Carrito",
+      path: "/cart",
+      icon: CartIcon, 
     },
     {
       title: "Categorías",

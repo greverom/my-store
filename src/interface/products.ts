@@ -19,3 +19,14 @@ export interface ProductCardProps {
   product: Product;
   onAddToCart: (product: Product) => void;
 }
+
+export interface CartContextType {
+  cart: Product[];
+  addToCart: (product: Product) => void;
+  removeFromCart: (id: number) => void;
+  clearCart: () => void;
+}
+
+export interface CartItemProps {
+  product: Product;
+}
