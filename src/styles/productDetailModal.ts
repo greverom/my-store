@@ -1,5 +1,5 @@
 import { Styles } from "react-modal";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const ModalStyles: Styles = {
 overlay: {
@@ -27,6 +27,15 @@ content: {
 },
 };
 
+const popIn = keyframes`
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
 export const ModalContent = styled.div`
   display: flex;
   width: auto;
@@ -37,6 +46,7 @@ export const ModalContent = styled.div`
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   position: relative;
   outline: none;
+  animation: ${popIn} 0.3s ease-out;
 `;
 
 export const ImageContainer = styled.div`

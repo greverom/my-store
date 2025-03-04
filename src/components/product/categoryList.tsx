@@ -1,11 +1,13 @@
 import { useSearchParams } from "react-router-dom";
-import { Container, Title } from "../../styles/shopping.style"; 
-import { ProductListContainer, ProductCardContainer, ProductImageWrapper, ProductImage, ProductTitle, ProductPrice, ProductInfo, CartIconWrapper } from "../../styles/product.style";
 import { useProductsByCategory } from "../../hooks/Product/useProductByCategory";
 import { useProductModal } from "../../hooks/Product/useProductModal";
-import Loading from "../ui/loading";
+import   ProductDetailModal from "./productDeatilModal";
 import { CartIcon } from "../../assets/icons/icons";
-import ProductDetailModal from "./productDeatilModal";
+import   Loading from "../ui/loading";
+import { Container, Title } from "../../styles/shopping.style"; 
+import { ProductListContainer, ProductCardContainer, ProductImageWrapper, 
+         ProductImage, ProductTitle, ProductPrice, ProductInfo, CartIconWrapper 
+        } from "../../styles/product.style";
 
 const Categories = () => {
   const [searchParams] = useSearchParams();
@@ -18,9 +20,7 @@ const Categories = () => {
     <>
       <Container>
         <Title>{categoryName ? categoryName.toUpperCase() : "Todas las Categorías"}</Title>
-        
         {loading && <Loading />}
-
         {!loading && !error && (
           <ProductListContainer>
             {products.map((product) => (

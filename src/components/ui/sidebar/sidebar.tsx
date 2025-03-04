@@ -1,13 +1,14 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { sidebarLinks, SidebarLink } from "../sidebar/sidebarLinks";
 import { useSidebar } from "../../../hooks/Sidebar/useSidebar";
-import logo from "../../../assets/react.svg";
+
 import { FaChevronDown } from "react-icons/fa";
 
 import {
-  SidebarContainer, SidebarNav, LogoContainer, LogoImage, 
+  SidebarContainer, SidebarNav, LogoContainer, 
   SidebarMenu, SidebarItem, SidebarLinkStyle, DropdownMenu,
-  Submenu, LogoutContainer, BurgerButton
+  Submenu, LogoutContainer, BurgerButton,
+  ShoppingEmoji,
 } from "../../../styles/Sidebar/sidebar.style";
 
 export const Sidebar = () => {
@@ -28,7 +29,7 @@ export const Sidebar = () => {
       <SidebarContainer ref={sidebarRef} $isOpen={isSidebarOpen}>
         <SidebarNav>
           <LogoContainer>
-            <LogoImage src={logo} alt="react logo" />
+            <ShoppingEmoji>🛍️</ShoppingEmoji>
           </LogoContainer>
 
           <SidebarMenu>

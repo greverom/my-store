@@ -3,14 +3,14 @@ import { ProductDetailModalProps } from "../../interface/products";
 import {
   ModalContent, ImageContainer, ProductImage,
   DetailsContainer, ProductTitle, ProductPrice, ProductDescription,
-  ProductOptions, CloseButton, ModalStyles
-} from "../../styles/productDetailModal";
+  ProductOptions, CloseButton, ModalStyles} from "../../styles/productDetailModal";
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({onAddToCart, isOpen, onClose, product, style = ModalStyles }) => {
   if (!product) return null;
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onClose} style={style}>
+
       <ModalContent>
         <CloseButton onClick={onClose}>✕</CloseButton> 
     
@@ -25,10 +25,11 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({onAddToCart, isO
     
           <ProductOptions>
             <button onClick={() => onAddToCart(product)}>Agregar al carrito</button>
-
           </ProductOptions>
         </DetailsContainer>
+
       </ModalContent>
+
     </Modal>
   );
 };

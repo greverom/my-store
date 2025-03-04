@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { ProductCardProps } from "../../interface/products";
-import { 
-          ProductImage, ProductTitle, ProductPrice, 
-          ProductCardContainer, ProductImageWrapper,
-          ProductInfo, CartIconWrapper} from "../../styles/product.style";
 import { CartIcon } from "../../assets/icons/icons";
-import ProductDetailModal from "./productDeatilModal";
+import   ProductDetailModal from "./productDeatilModal";
+import { ProductImage, ProductTitle, ProductPrice, 
+         ProductCardContainer, ProductImageWrapper,
+         ProductInfo, CartIconWrapper} from "../../styles/product.style";
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

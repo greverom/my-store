@@ -9,7 +9,7 @@ export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
   width: 275px;
   background-color: rgba(54, 58, 69, 0.95);
   backdrop-filter: blur(10px);
-  transition: left 0.3s ease-in-out;
+  transition: left 0.4s;
   z-index: 9;
 `;
 
@@ -46,7 +46,7 @@ export const BurgerButton = styled.button<{ $isOpen: boolean }>`
   cursor: pointer;
   z-index: 10;
   animation: ${({ $isOpen }) => ($isOpen ? moveButton : "none")} 0.3s ease-in-out;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.2s;
 `;
 
 export const SidebarOverlay = styled.div`
@@ -64,14 +64,14 @@ export const LogoContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  margin: 15px 5px 30px;
-  padding: 10px;
+  margin: 15px 25px;
 `;
 
-export const LogoImage = styled.img`
-  width: 2rem;
-  margin: 10px 10px;
-  transition: width 0.8s ease-in-out;
+export const ShoppingEmoji = styled.span`
+  font-size: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const LogoText = styled.span`
@@ -120,14 +120,14 @@ export const SidebarLinkStyle = styled(NavLink)`
       fill: #5fb8d3 !important;
     }
 
-svg {
-  width: 21px;
-  height: 21px;
-  fill: white;
-  padding-left: 30px;
-  flex-shrink: 0;
-  text-align: center;
-}
+    svg {
+      width: 21px;
+      height: 21px;
+      fill: white;
+      padding-left: 30px;
+      flex-shrink: 0;
+      text-align: center;
+  }
 
 `;
 
@@ -143,31 +143,31 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean,
   font-size: 0.9rem;
   transition: all 0.4s;
 
-svg {
-  width: 20px;
-  height: 20px;
-  margin-left: 30px;
-  flex-shrink: 0;
-  fill: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
-}
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 30px;
+    flex-shrink: 0;
+    fill: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
+  }
 
-.arrow {
-  width: 12px;
-  height: 12px;
-  margin-right: 30px; 
-  transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
-  transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0)")};
-}
+  .arrow {
+    width: 12px;
+    height: 12px;
+    margin-right: 30px; 
+    transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
+    transform: ${({ $isOpen }) => ($isOpen ? "rotate(180deg)" : "rotate(0)")};
+  }
 
-span {
-  flex-grow: 1; 
-  text-align: left; 
-  margin-left: 19.5px;
-}
+  span {
+    flex-grow: 1; 
+    text-align: left; 
+    margin-left: 19.5px;
+  }
 
-&:hover {
-  background-color: #4a4f5a;
-}
+  &:hover {
+    background-color: #4a4f5a;
+  }
 `;
 
 export const Submenu = styled.ul<{ $isOpen: boolean }>`
@@ -180,33 +180,33 @@ export const Submenu = styled.ul<{ $isOpen: boolean }>`
   opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
   transition: max-height 0.3s, opacity 0.3s, transform 0.3s; 
 
-li {
-  width: 100%;
-  list-style: none;
-}
+  li {
+    width: 100%;
+    list-style: none;
+  }
 
-li a {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  color: #dcdcdc;
-  padding: 15px 40px;
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: background-color 0.3s ease-in-out;
+  li a {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #dcdcdc;
+    padding: 15px 40px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
 
-    &:hover {
-      background-color: #4a4f5a;
-    }
-}
+      &:hover {
+        background-color: #4a4f5a;
+      }
+  }
 
-li a.nav-active::before {
-  content: "•";
-  margin-right: 8px;
-  color: white;
-  font-size: .9rem;
-}
+  li a.nav-active::before {
+    content: "•";
+    margin-right: 8px;
+    color: white;
+    font-size: .9rem;
+  }
 `;
 
 export const LogoutContainer = styled.div`
@@ -215,25 +215,25 @@ export const LogoutContainer = styled.div`
   padding-top: 40px;
   padding-bottom: 20px;
   
-.logout-link {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: left;
-  padding: 15px 30px;
-  gap: 18px;
-  color: white;
-  cursor: pointer;
-
-  svg {
-    width: 21px;
-    height: 21px;
-  }
-
-  span {
+  .logout-link {
     display: flex;
-    font-size: 0.85rem;
-  }
+    width: 100%;
+    align-items: center;
+    justify-content: left;
+    padding: 15px 30px;
+    gap: 18px;
+    color: white;
+    cursor: pointer;
+
+    svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    span {
+      display: flex;
+      font-size: 0.85rem;
+    }
 }
 `;
 
