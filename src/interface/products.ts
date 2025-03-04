@@ -5,6 +5,7 @@ export interface Product {
   category: string;
   description: string;
   image: string;
+  quantity?: number;
   }
 
 export interface ProductDetailModalProps {
@@ -24,9 +25,14 @@ export interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
   removeFromCart: (id: number) => void;
+  increaseQuantity: (id: number) => void; 
+  decreaseQuantity: (id: number) => void;
   clearCart: () => void;
 }
 
 export interface CartItemProps {
   product: Product;
+  onIncrease: () => void; 
+  onDecrease: () => void; 
+  onRemove: () => void;
 }

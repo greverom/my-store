@@ -73,3 +73,31 @@ export const ClearCartButton = styled.button`
     background-color: #cc0000;
   }
 `;
+
+export const QuantityControls = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
+// Botón de cantidad
+export const QuantityButton = styled.button`
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  background: #ff9900;
+  color: white;
+  border-radius: 5px;
+
+  &:hover {
+    background: #ff6600;
+  }
+`;
+
+// Texto de cantidad
+export const QuantityText = styled.span`
+  font-size: 16px;
+  font-weight: bold;
+`;
