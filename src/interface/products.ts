@@ -32,7 +32,7 @@ export interface CartContextType {
 
 export interface CartItemProps {
   product: Product;
-  onIncrease: () => void; 
-  onDecrease: () => void; 
-  onRemove: () => void;
+  onIncrease: (id: number) => void;
+  onDecrease: (id: number) => void;
+  onRemove: (id: number) => void;
 }
