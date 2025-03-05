@@ -15,17 +15,30 @@ export const theme = {
   textDark: "#333", 
 };
 
-export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
+export const SidebarContainer = styled.div<{ $isOpen: boolean; $isDesktopExpanded: boolean }>`
   position: fixed;
   left: ${({ $isOpen }) => ($isOpen ? "0" : "-300px")};
   top: 0;
   bottom: 0;
   width: 275px;
   background-color: ${theme.sidebarBg};
-  box-shadow: ${({ $isOpen }) => ($isOpen ? theme.sidebarShadow : "none")};
+  box-shadow: ${({ $isOpen, $isDesktopExpanded }) => ($isOpen || $isDesktopExpanded) ? theme.sidebarShadow : "none"};
   backdrop-filter: blur(15px);
-  transition: left 0.7s;
+  transition: all 0.7s;
   z-index: 9;
+
+   @media (min-width: 768px) {
+    left: 0; 
+    width: 67px; 
+    
+    &:hover {
+      width: 275px;  
+    }
+  }
+
+  @media (max-width: 492px) {
+    left: ${({ $isOpen }) => ($isOpen ? "0" : "-300px")};
+  }
 `;
 
 export const SidebarNav = styled.nav`
@@ -55,11 +68,15 @@ export const BurgerButton = styled.button<{ $isOpen: boolean }>`
   color: rgba(54, 58, 69);
   cursor: pointer;
   z-index: 8;
-  display: ${({ $isOpen }) => ($isOpen ? "none" : "block")}; 
+  
+  display: none;
+
+  @media (max-width: 768px) {
+    display: ${({ $isOpen }) => ($isOpen ? "none" : "block")}; 
+  }
 `;
 
-export const CloseButton = styled.button<{$isOpen: boolean}>`
-  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")}; 
+export const CloseButton = styled.button<{ $isOpen: boolean }>`
   position: fixed; 
   top: 22px;
   left: 250px; 
@@ -75,6 +92,12 @@ export const CloseButton = styled.button<{$isOpen: boolean}>`
   z-index: 11;
   transition: all 0.4s ease-in-out;
 
+  display: none; /* Ocultar por defecto en pantallas grandes */
+
+  @media (max-width: 768px) {
+    display: ${({ $isOpen }) => ($isOpen ? "block" : "none")}; 
+  }
+
   &:hover {
     transform: scale(1.05);
   }
@@ -85,11 +108,11 @@ export const LogoContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  margin: 20px;
+  margin: 20px 14px;
 `;
 
 export const ShoppingEmoji = styled.span`
-  font-size: 46px;
+  font-size: 44px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -116,7 +139,7 @@ export const SidebarLinkStyle = styled(NavLink)`
   text-decoration: none;
   padding: 15px 0;
   justify-content: left;
-  gap: 18px;
+  gap: 20px;
   cursor: pointer;
   font-size: .9rem;
   transition: all 0.2s ease-in-out;
@@ -138,14 +161,21 @@ export const SidebarLinkStyle = styled(NavLink)`
     width: 20px;
     height: 20px;
     fill: ${theme.sidebarText};
-    padding-left: 30px;
+    padding-left: 25px;
     flex-shrink: 0;
     text-align: center;
     transition: fill 0.2s;
+  }
 
-    &:hover {
-      fill: ${theme.iconHover};
-    }
+    span {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  }
+
+  ${SidebarContainer}:hover & span {
+    opacity: 1;
+    visibility: visible;
   }
 `;
 
@@ -165,7 +195,7 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean;
   svg {
     width: 20px;
     height: 20px;
-    margin-left: 30px;
+    margin-left: 25px;
     flex-shrink: 0;
     fill: ${({ $isParentActive }) => ($isParentActive ? theme.sidebarTextActive : theme.sidebarText)};
   }
@@ -179,9 +209,17 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean;
   }
 
   span {
+    opacity: 0;
+    visibility: hidden;
     flex-grow: 1; 
     text-align: left; 
     margin-left: 19.5px;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  }
+
+   ${SidebarContainer}:hover & span {
+    opacity: 1;
+    visibility: visible;
   }
 
   &:hover {
@@ -243,8 +281,8 @@ export const LogoutContainer = styled.div`
     width: 100%;
     align-items: center;
     justify-content: left;
-    padding: 15px 30px;
-    gap: 18px;
+    padding: 15px 28px;
+    gap: 16px;
     color: white;
     cursor: pointer;
 
@@ -255,7 +293,14 @@ export const LogoutContainer = styled.div`
 
     span {
       display: flex;
+      opacity: 0;
+      visibility: hidden;
       font-size: 0.85rem;
+      transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    }
+    ${SidebarContainer}:hover & span {
+      opacity: 1;
+      visibility: visible;
     }
 }
 `;

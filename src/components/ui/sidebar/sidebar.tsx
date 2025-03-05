@@ -11,25 +11,35 @@ import { SidebarContainer, SidebarNav, LogoContainer, SidebarMenu,
         } from "../../../styles/Sidebar/sidebar.style";
 
 export const Sidebar = () => {
-  const { openDropdown, toggleSubMenu, closeSubMenu, sidebarRef,
-          isSidebarOpen, setIsSidebarOpen, dropdownRefs } = useSidebar();
-  const { pathname } = useLocation();
-  const [searchParams] = useSearchParams();
-  const categoryName = searchParams.get("name");
+  const { isSidebarOpen,
+          setIsSidebarOpen,
+          dropdownRefs,
+          isSidebarExpanded,
+          sidebarRef,
+          handleMouseEnter,
+          handleMouseLeave,
+          openDropdown,
+          toggleSubMenu,
+          closeSubMenu, } = useSidebar();
 
-  const handleToggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+  const { pathname }      = useLocation();
+  const [ searchParams]   = useSearchParams();
+  const   categoryName    = searchParams.get("name");
+
 
   return (
     <>
-      <BurgerButton onClick={handleToggleSidebar} $isOpen={isSidebarOpen}>
+      <BurgerButton onClick={() => setIsSidebarOpen(true)} $isOpen={isSidebarOpen}>
         ☰
       </BurgerButton>
 
-      <SidebarContainer ref={sidebarRef} $isOpen={isSidebarOpen}>
+      <SidebarContainer ref={sidebarRef}
+                        $isOpen={isSidebarOpen || isSidebarExpanded}
+                        $isDesktopExpanded = {isSidebarExpanded}
+                        onMouseEnter = {handleMouseEnter}
+                        onMouseLeave = {handleMouseLeave}>
         <SidebarNav>
-        <CloseButton $isOpen={isSidebarOpen} onClick={handleToggleSidebar}>✕</CloseButton>
+        <CloseButton onClick={() => setIsSidebarOpen(false)} $isOpen={isSidebarOpen}>✕</CloseButton>
           <LogoContainer>
             <ShoppingEmoji>🛍️</ShoppingEmoji>
           </LogoContainer>
