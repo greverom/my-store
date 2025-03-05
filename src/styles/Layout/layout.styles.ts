@@ -20,7 +20,7 @@ export const MainLayout = styled.div`
 
 export const Content = styled.div`
   flex-grow: 1;
-  padding: 20px auto;
+  padding: 10px auto;
   margin: 0;
   box-sizing: border-box;
   min-height: 100vh;

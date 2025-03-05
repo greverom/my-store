@@ -1,5 +1,19 @@
 import { NavLink } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+
+export const theme = {
+  sidebarBg: "rgba(98, 99, 102, 0.66)", 
+  sidebarText: "rgba(241, 235, 232, 0.95)", 
+  sidebarTextActive: "rgba(247, 242, 240, 0.95)", 
+  sidebarHoverBg: "rgba(251, 160, 124, 0.53)", 
+  sidebarShadow: "4px 0px 20px rgba(0, 0, 0, 0.3)", 
+
+  iconColor: "rgba(250, 138, 86, 0.95)", 
+  iconHover: "rgba(250, 100, 50, 1)", 
+
+  textLight: "#ffffff",
+  textDark: "#333", 
+};
 
 export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
   position: fixed;
@@ -7,9 +21,10 @@ export const SidebarContainer = styled.div<{ $isOpen: boolean }>`
   top: 0;
   bottom: 0;
   width: 275px;
-  background-color: rgba(54, 58, 69, 0.95);
-  backdrop-filter: blur(10px);
-  transition: left 0.4s;
+  background-color: ${theme.sidebarBg};
+  box-shadow: ${({ $isOpen }) => ($isOpen ? theme.sidebarShadow : "none")};
+  backdrop-filter: blur(15px);
+  transition: left 0.7s;
   z-index: 9;
 `;
 
@@ -18,6 +33,7 @@ export const SidebarNav = styled.nav`
   flex-direction: column;
   height: 100%;
   overflow-y: auto; 
+  gap: 25px;
   overflow-x: hidden; 
   scrollbar-width: thin; 
   scrollbar-color: #5a5a5a transparent;
@@ -27,36 +43,41 @@ export const SidebarNav = styled.nav`
   }
 `;
 
-const moveButton = keyframes`
-  0% { left: 15px; }
-  100% { left: 234px; }
-`;
-
 export const BurgerButton = styled.button<{ $isOpen: boolean }>`
   position: fixed;
   top: 22px;
-  left: ${({ $isOpen }) => ($isOpen ? "250px" : "15px")};
+  left: 15px;
   border: none;
-  border-radius: ${({ $isOpen }) => ($isOpen ? "50px" : "0px")};
   width: 45px;
   height: 45px;
-  font-size: ${({ $isOpen }) => ($isOpen ? "18px" : "38px")}; 
-  background-color: ${({ $isOpen }) => ($isOpen ? "rgba(54, 58, 69)" : "transparent")}; 
-  color: ${({ $isOpen }) => ($isOpen ? "white" : "rgba(54, 58, 69)")};
+  font-size: 38px;
+  background-color: transparent;
+  color: rgba(54, 58, 69);
   cursor: pointer;
-  z-index: 10;
-  animation: ${({ $isOpen }) => ($isOpen ? moveButton : "none")} 0.3s ease-in-out;
-  transition: transform 0.2s;
+  z-index: 8;
+  display: ${({ $isOpen }) => ($isOpen ? "none" : "block")}; 
 `;
 
-export const SidebarOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+export const CloseButton = styled.button<{$isOpen: boolean}>`
+  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")}; 
+  position: fixed; 
+  top: 22px;
+  left: 250px; 
+  border: none;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  background-color: rgba(250, 138, 86, 0.95);
+  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3); 
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  z-index: 11;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const LogoContainer = styled.div`
@@ -64,7 +85,7 @@ export const LogoContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
-  margin: 15px 25px;
+  margin: 20px;
 `;
 
 export const ShoppingEmoji = styled.span`
@@ -72,15 +93,6 @@ export const ShoppingEmoji = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const LogoText = styled.span`
-  display: block;
-  font-size: 0.9rem;
-  color: white;
-  font-weight: bold;
-  margin-left: 5px;
-  transition: opacity 0.8s ease-in;
 `;
 
 export const SidebarMenu = styled.ul`
@@ -100,55 +112,62 @@ export const SidebarLinkStyle = styled(NavLink)`
   width: 100%;
   display: flex;
   align-items: center;
-  color: white;
+  color: ${theme.sidebarText};
   text-decoration: none;
-  padding: 12px 0;
+  padding: 15px 0;
   justify-content: left;
   gap: 18px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
   font-size: .9rem;
+  transition: all 0.2s ease-in-out;
 
     &:hover {
-      background-color: #4a4f5a;
-    }
-
-    &.active {
-      color: #5fb8d3;
-    }
-    &.active svg {
-      fill: #5fb8d3 !important;
-    }
-
-    svg {
-      width: 21px;
-      height: 21px;
-      fill: white;
-      padding-left: 30px;
-      flex-shrink: 0;
-      text-align: center;
+    background-color: ${theme.sidebarHoverBg};
   }
 
+  &.active {
+    color: ${theme.sidebarTextActive};
+    font-weight: bold;
+  }
+
+  &.active svg {
+    fill: ${theme.sidebarTextActive} !important;
+  }
+
+   svg {
+    width: 20px;
+    height: 20px;
+    fill: ${theme.sidebarText};
+    padding-left: 30px;
+    flex-shrink: 0;
+    text-align: center;
+    transition: fill 0.2s;
+
+    &:hover {
+      fill: ${theme.iconHover};
+    }
+  }
 `;
 
-export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean, $isParentActive: boolean }>`
+export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean; $isParentActive: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
-  color: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
+  color: ${({ $isParentActive }) => ($isParentActive ? theme.sidebarTextActive : theme.sidebarText)};
+  font-weight: ${({ $isParentActive }) => ($isParentActive ? "bold" : "normal")};
   text-decoration: none;
-  padding: 12px 0;
+  padding: 16px 0;
   justify-content: flex-start;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: all 0.4s;
+  transition: all 0.3s;
 
   svg {
     width: 20px;
     height: 20px;
     margin-left: 30px;
     flex-shrink: 0;
-    fill: ${({ $isParentActive }) => ($isParentActive ? "#5fb8d3" : "white")};
+    fill: ${({ $isParentActive }) => ($isParentActive ? theme.sidebarTextActive : theme.sidebarText)};
   }
 
   .arrow {
@@ -166,7 +185,7 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean,
   }
 
   &:hover {
-    background-color: #4a4f5a;
+   background-color: ${theme.sidebarHoverBg};
   }
 `;
 
@@ -174,11 +193,11 @@ export const Submenu = styled.ul<{ $isOpen: boolean }>`
   display: block;
   width: 100%;
   padding-left: 0;
-  border-bottom: 1px solid #5a5a5a; 
+  border-bottom: 1px solid ${theme.sidebarHoverBg};
   overflow: hidden;
   max-height: ${({ $isOpen }) => ($isOpen ? "200px" : "0")}; 
   opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
-  transition: max-height 0.3s, opacity 0.3s, transform 0.3s; 
+  transition: max-height 0.3s, opacity 0.3s, transform 0.3s;
 
   li {
     width: 100%;
@@ -190,22 +209,26 @@ export const Submenu = styled.ul<{ $isOpen: boolean }>`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: #dcdcdc;
+    color: ${theme.sidebarText};
     padding: 15px 40px;
     font-size: 0.9rem;
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
 
-      &:hover {
-        background-color: #4a4f5a;
-      }
+    &:hover {
+      background-color: ${theme.sidebarHoverBg};
+    }
   }
 
-  li a.nav-active::before {
-    content: "•";
-    margin-right: 8px;
-    color: white;
-    font-size: .9rem;
+  li a.nav-active {
+    color: ${theme.sidebarTextActive};
+
+    &::before {
+      content: "•";
+      margin-right: 8px;
+      color: ${theme.sidebarTextActive};
+      font-size: 0.9rem;
+    }
   }
 `;
 
