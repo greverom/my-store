@@ -1,47 +1,26 @@
 import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import { sidebarLinks, SidebarLink } from "../sidebar/sidebarLinks";
 import { useSidebar } from "../../../hooks/Sidebar/useSidebar";
-
 import { FaChevronDown } from "react-icons/fa";
-
-import { SidebarContainer, SidebarNav, LogoContainer, SidebarMenu, 
-         SidebarItem, SidebarLinkStyle, DropdownMenu,
-         Submenu, LogoutContainer, BurgerButton, ShoppingEmoji, 
-        } from "../../../styles/Sidebar/sidebar.style";
+import { SidebarContainer, SidebarNav, LogoContainer, SidebarMenu, SidebarItem, SidebarLinkStyle, 
+         DropdownMenu, Submenu, LogoutContainer, BurgerButton, ShoppingEmoji } from "../../../styles/Sidebar/sidebar.style";
 
 export const Sidebar = () => {
-  const { isSidebarOpen,
-          isMobile,
-          dropdownRefs,
-          handleOpenSidebar,
-          isSidebarExpanded,
-          sidebarRef,
-          handleMouseEnter,
-          handleMouseLeave,
-          openDropdown,
-          toggleSubMenu,
-          closeSubMenu, } = useSidebar();
-
+  const { isSidebarOpen, isMobile, dropdownRefs, handleOpenSidebar, isSidebarExpanded, sidebarRef,
+          handleMouseEnter, handleMouseLeave, openDropdown, toggleSubMenu, closeSubMenu, } = useSidebar();
   const { pathname }      = useLocation();
   const [ searchParams]   = useSearchParams();
   const   categoryName    = searchParams.get("name");
 
-
   return (
     <>
-
-      <SidebarContainer ref={sidebarRef}
-                        $isOpen={isSidebarOpen || isSidebarExpanded}
-                        $isDesktopExpanded = {isSidebarExpanded}
-                        onMouseEnter={!isMobile ? handleMouseEnter : undefined} 
-                        onMouseLeave={handleMouseLeave}>
-      <BurgerButton onClick={handleOpenSidebar} $isOpen={isSidebarOpen}>
-  ☰
-</BurgerButton>
+        <BurgerButton   onClick={ handleOpenSidebar } $isOpen={ isSidebarOpen }> ☰ </BurgerButton>
+      <SidebarContainer ref={ sidebarRef } $isOpen={ isSidebarOpen || isSidebarExpanded } $isDesktopExpanded = { isSidebarExpanded }
+                        onMouseEnter={ !isMobile ? handleMouseEnter : undefined } onMouseLeave = { handleMouseLeave }>
         <SidebarNav>
-        {/* <CloseButton onClick={() => setIsSidebarOpen(false)} $isOpen={isSidebarOpen}>✕</CloseButton> */}
+
           <LogoContainer>
-            <ShoppingEmoji>🛍️</ShoppingEmoji>
+            <ShoppingEmoji> 🛍️ </ShoppingEmoji>
           </LogoContainer>
 
           <SidebarMenu>
@@ -50,9 +29,7 @@ export const Sidebar = () => {
               .map((link: SidebarLink, index: number) => {
                 const isOpen = openDropdown === link.path;
                 const Icon = link.icon; 
-                const isParentActive = link.subMenu?.some((subLink: SidebarLink) =>
-                  pathname.startsWith(subLink.path)
-                ) || pathname.startsWith(link.path);
+                const isParentActive = link.subMenu?.some((subLink: SidebarLink) => pathname.startsWith(subLink.path)) || pathname.startsWith(link.path);
 
                 return (
                   <SidebarItem

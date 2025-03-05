@@ -47,7 +47,7 @@ export const useSidebar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobile, isSidebarOpen]);
 
-  // 🔹 Control de hover
+
   const handleMouseEnter = () => {
     if (!isMobile) {
       setIsSidebarExpanded(true);
@@ -71,7 +71,7 @@ export const useSidebar = () => {
 
     setTimeout(() => {
       setPreventClose(false); 
-    }, 400);
+    }, 200);
   };
 
   return {

@@ -62,22 +62,24 @@ export const SidebarNav = styled.nav`
 
 export const BurgerButton = styled.button<{ $isOpen: boolean }>`
   position: fixed;
-  display:none;
   top: 50px;
-  left: 275px;
+  left: ${({ $isOpen }) => ($isOpen ? "-999px" : "0px")}; 
   width: 40px;
   height: 40px;
   font-size: 24px;
   background-color: ${theme.iconColor}; 
   color: white;
   border: none;
-  border-radius: 0 10px 10px 0; 
+  border-radius: 0 10px 10px 0;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  z-index: 11;
+  transition: left 0.3s ease-in-out;
+  z-index: 12; 
 
   @media (max-width: 768px) {
-    display: block;
+    display: ${({ $isOpen }) => ($isOpen ? "none" : "block")};
+  }
+    @media (min-width: 769px) { 
+    display: none; 
   }
 
   &:hover {
