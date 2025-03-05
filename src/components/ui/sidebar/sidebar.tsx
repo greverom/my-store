@@ -70,7 +70,7 @@ export const Sidebar = () => {
                           </Submenu>
                       </>
                     ) : (
-                      <SidebarLinkStyle to={link.path} className={({ isActive }) => (isActive ? "active" : "")}>
+                      <SidebarLinkStyle to={ link.path } className={({ isActive }) => (isActive ? "active" : "")} $isOpen={ isSidebarOpen }>
                         <Icon /> 
                         <span>{link.title}</span>
                       </SidebarLinkStyle>
@@ -80,7 +80,7 @@ export const Sidebar = () => {
             })}
           </SidebarMenu>
 
-          <LogoutContainer>
+          <LogoutContainer $isOpen = { isSidebarOpen }>
             {sidebarLinks
               .filter(link => link.title === "Salir") 
               .map((link, index) => {

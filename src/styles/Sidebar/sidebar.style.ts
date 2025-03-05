@@ -115,7 +115,7 @@ export const SidebarItem = styled.li`
   align-items: center;
 `;
 
-export const SidebarLinkStyle = styled(NavLink)`
+export const SidebarLinkStyle = styled(NavLink)<{ $isOpen: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -157,9 +157,18 @@ export const SidebarLinkStyle = styled(NavLink)`
       transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
   }
 
-  ${SidebarContainer}:hover & span {
-    opacity: 1;
-    visibility: visible;
+  @media (min-width: 768px) {
+    ${SidebarContainer}:hover & span {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  @media (max-width: 767px) {
+    span {
+      opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
+      visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
+    }
   }
 `;
 
@@ -201,9 +210,18 @@ export const DropdownMenu = styled.div<{ $isOpen: boolean; $isExpanded: boolean;
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
   }
 
-   ${SidebarContainer}:hover & span {
-    opacity: 1;
-    visibility: visible;
+  @media (min-width: 768px) {
+    ${SidebarContainer}:hover & span {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  @media (max-width: 767px) {
+    span {
+      opacity: ${({ $isExpanded }) => ($isExpanded ? "1" : "0")};
+      visibility: ${({ $isExpanded }) => ($isExpanded ? "visible" : "hidden")};
+    }
   }
 
   &:hover {
@@ -254,7 +272,7 @@ export const Submenu = styled.ul<{ $isOpen: boolean }>`
   }
 `;
 
-export const LogoutContainer = styled.div`
+export const LogoutContainer = styled.div<{ $isOpen:boolean }>`
   width: 100%;
   margin-top: auto;
   padding-top: 40px;
@@ -282,9 +300,19 @@ export const LogoutContainer = styled.div`
       font-size: 0.85rem;
       transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
     }
+      
+    @media (min-width: 768px) {
     ${SidebarContainer}:hover & span {
       opacity: 1;
       visibility: visible;
+      }
+    }
+
+    @media (max-width: 767px) {
+      span {
+        opacity: ${({ $isOpen }) => ($isOpen ? "1" : "0")};
+        visibility: ${({ $isOpen }) => ($isOpen ? "visible" : "hidden")};
+      }
     }
 }
 `;
