@@ -4,24 +4,27 @@ export const useSidebar = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 492); // ✅ Detectar <= 492px
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
 
   const dropdownRefs = useRef<{ [key: string]: HTMLLIElement | null }>({});
   const sidebarRef = useRef<HTMLDivElement | null>(null);
 
-  // 🔹 Detectar cambios de tamaño de pantalla
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
-      setIsSmallScreen(window.innerWidth <= 492); // ✅ Se actualiza al cambiar el tamaño de pantalla
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // 🔹 Cerrar sidebar si se hace click fuera (solo en móviles)
+  useEffect(() => {
+    if (!isSidebarOpen && !isSidebarExpanded) {
+      setOpenDropdown(null);
+    }
+  }, [isSidebarOpen, isSidebarExpanded]);
+
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -44,17 +47,16 @@ export const useSidebar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobile, isSidebarOpen]);
 
-  // ✅ Cerrar sidebar si el mouse sale en pantallas >768px o <=492px
+
   const handleMouseEnter = () => {
-    if (!isMobile || isSmallScreen) {
+    if (!isMobile) {
       setIsSidebarExpanded(true);
     }
   };
 
   const handleMouseLeave = () => {
-    if (!isMobile || isSmallScreen) {
+    if (!isMobile) {
       setIsSidebarExpanded(false);
-      if (isSmallScreen) setIsSidebarOpen(false); // ✅ Se cierra completamente en <= 492px
     }
   };
 
@@ -70,8 +72,6 @@ export const useSidebar = () => {
   return {
     isSidebarOpen,
     setIsSidebarOpen,
-    isMobile,
-    isSmallScreen, // ✅ Nueva variable para usar en el Sidebar.tsx
     isSidebarExpanded,
     openDropdown,
     toggleSubMenu,
