@@ -7,13 +7,13 @@ import { FaChevronDown } from "react-icons/fa";
 import { SidebarContainer, SidebarNav, LogoContainer, SidebarMenu, 
          SidebarItem, SidebarLinkStyle, DropdownMenu,
          Submenu, LogoutContainer, BurgerButton, ShoppingEmoji, 
-         CloseButton
         } from "../../../styles/Sidebar/sidebar.style";
 
 export const Sidebar = () => {
   const { isSidebarOpen,
-          setIsSidebarOpen,
+          isMobile,
           dropdownRefs,
+          handleOpenSidebar,
           isSidebarExpanded,
           sidebarRef,
           handleMouseEnter,
@@ -29,17 +29,17 @@ export const Sidebar = () => {
 
   return (
     <>
-      <BurgerButton onClick={() => setIsSidebarOpen(true)} $isOpen={isSidebarOpen}>
-        ☰
-      </BurgerButton>
 
       <SidebarContainer ref={sidebarRef}
                         $isOpen={isSidebarOpen || isSidebarExpanded}
                         $isDesktopExpanded = {isSidebarExpanded}
-                        onMouseEnter = {handleMouseEnter}
-                        onMouseLeave = {handleMouseLeave}>
+                        onMouseEnter={!isMobile ? handleMouseEnter : undefined} 
+                        onMouseLeave={handleMouseLeave}>
+      <BurgerButton onClick={handleOpenSidebar} $isOpen={isSidebarOpen}>
+  ☰
+</BurgerButton>
         <SidebarNav>
-        <CloseButton onClick={() => setIsSidebarOpen(false)} $isOpen={isSidebarOpen}>✕</CloseButton>
+        {/* <CloseButton onClick={() => setIsSidebarOpen(false)} $isOpen={isSidebarOpen}>✕</CloseButton> */}
           <LogoContainer>
             <ShoppingEmoji>🛍️</ShoppingEmoji>
           </LogoContainer>

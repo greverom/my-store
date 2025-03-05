@@ -5,6 +5,7 @@ export const useSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(false);
+  const [preventClose, setPreventClose] = useState(false); 
 
   const dropdownRefs = useRef<{ [key: string]: HTMLLIElement | null }>({});
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -23,7 +24,6 @@ export const useSidebar = () => {
       setOpenDropdown(null);
     }
   }, [isSidebarOpen, isSidebarExpanded]);
-
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -47,7 +47,7 @@ export const useSidebar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMobile, isSidebarOpen]);
 
-
+  // 🔹 Control de hover
   const handleMouseEnter = () => {
     if (!isMobile) {
       setIsSidebarExpanded(true);
@@ -55,18 +55,23 @@ export const useSidebar = () => {
   };
 
   const handleMouseLeave = () => {
-    if (!isMobile) {
+    if (preventClose) return; 
+
+    if (isMobile) {
+      setIsSidebarOpen(false);
+      setOpenDropdown(null);
+    } else {
       setIsSidebarExpanded(false);
     }
   };
 
-  // Manejo de submenús
-  const toggleSubMenu = (menuKey: string) => {
-    setOpenDropdown((prev) => (prev === menuKey ? null : menuKey));
-  };
+  const handleOpenSidebar = () => {
+    setPreventClose(true); 
+    setIsSidebarOpen(true);
 
-  const closeSubMenu = () => {
-    setOpenDropdown(null);
+    setTimeout(() => {
+      setPreventClose(false); 
+    }, 400);
   };
 
   return {
@@ -74,11 +79,13 @@ export const useSidebar = () => {
     setIsSidebarOpen,
     isSidebarExpanded,
     openDropdown,
-    toggleSubMenu,
-    closeSubMenu,
+    toggleSubMenu: (menuKey: string) => setOpenDropdown((prev) => (prev === menuKey ? null : menuKey)),
+    closeSubMenu: () => setOpenDropdown(null),
     sidebarRef,
     dropdownRefs,
+    isMobile,
     handleMouseEnter,
     handleMouseLeave,
+    handleOpenSidebar, 
   };
 };

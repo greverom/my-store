@@ -6,7 +6,7 @@ export const theme = {
   sidebarText: "rgba(241, 235, 232, 0.95)", 
   sidebarTextActive: "rgba(247, 242, 240, 0.95)", 
   sidebarHoverBg: "rgba(251, 160, 124, 0.53)", 
-  sidebarShadow: "4px 0px 20px rgba(0, 0, 0, 0.3)", 
+  sidebarShadow: "4px 0px 20px rgba(0, 0, 0, 0.2)", 
 
   iconColor: "rgba(250, 138, 86, 0.95)", 
   iconHover: "rgba(250, 100, 50, 1)", 
@@ -17,27 +17,31 @@ export const theme = {
 
 export const SidebarContainer = styled.div<{ $isOpen: boolean; $isDesktopExpanded: boolean }>`
   position: fixed;
-  left: ${({ $isOpen }) => ($isOpen ? "0" : "-300px")};
+  left: ${({ $isOpen }) => ($isOpen ? "0" : "-280px")}; 
   top: 0;
   bottom: 0;
   width: 275px;
   background-color: ${theme.sidebarBg};
-  box-shadow: ${({ $isOpen, $isDesktopExpanded }) => ($isOpen || $isDesktopExpanded) ? theme.sidebarShadow : "none"};
+  box-shadow: ${theme.sidebarShadow};
   backdrop-filter: blur(15px);
   transition: all 0.7s;
   z-index: 9;
 
-   @media (min-width: 768px) {
-    left: 0; 
-    width: 67px; 
-    
+  @media (min-width: 768px) {
+    left: 0;
+    width: 67px;
+
     &:hover {
       width: 275px;  
     }
   }
 
-  @media (max-width: 492px) {
-    left: ${({ $isOpen }) => ($isOpen ? "0" : "-300px")};
+  @media (max-width: 768px) {
+    left: ${({ $isOpen }) => ($isOpen ? "0" : "-280px")};
+
+    &:hover {
+      width: ${({ $isOpen }) => ($isOpen ? "275px" : "0")}; 
+    }
   }
 `;
 
@@ -58,48 +62,26 @@ export const SidebarNav = styled.nav`
 
 export const BurgerButton = styled.button<{ $isOpen: boolean }>`
   position: fixed;
-  top: 22px;
-  left: 15px;
-  border: none;
-  width: 45px;
-  height: 45px;
-  font-size: 38px;
-  background-color: transparent;
-  color: rgba(54, 58, 69);
-  cursor: pointer;
-  z-index: 8;
-  
-  display: none;
-
-  @media (max-width: 768px) {
-    display: ${({ $isOpen }) => ($isOpen ? "none" : "block")}; 
-  }
-`;
-
-export const CloseButton = styled.button<{ $isOpen: boolean }>`
-  position: fixed; 
-  top: 22px;
-  left: 250px; 
-  border: none;
-  width: 45px;
-  height: 45px;
-  font-size: 22px;
-  background-color: rgba(250, 138, 86, 0.95);
-  box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3); 
-  border-radius: 50%;
+  display:none;
+  top: 50px;
+  left: 275px;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  background-color: ${theme.iconColor}; 
   color: white;
+  border: none;
+  border-radius: 0 10px 10px 0; 
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
   z-index: 11;
-  transition: all 0.4s ease-in-out;
-
-  display: none; /* Ocultar por defecto en pantallas grandes */
 
   @media (max-width: 768px) {
-    display: ${({ $isOpen }) => ($isOpen ? "block" : "none")}; 
+    display: block;
   }
 
   &:hover {
-    transform: scale(1.05);
+    background-color: ${theme.iconHover};
   }
 `;
 
