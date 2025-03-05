@@ -1,12 +1,13 @@
 import { CartItemProps } from "../../interface/products";
-import { useCart } from "../../hooks/Cart/useCart";
+import { useCart, useRemoveFromCart } from "../../hooks/Cart/useCart";
 import { FaTrash } from "react-icons/fa";
 import { CartItemContainer, CartItemImage, CartItemDetails,
          CartItemTitle, CartItemPrice, QuantityButton,
          QuantityControls, QuantityText}from "../../styles/cart.style";
  
 const CartItem: React.FC<CartItemProps> = ({ product }) => {
-  const { removeFromCart, increaseQuantity, decreaseQuantity } = useCart(); 
+  const { increaseQuantity, decreaseQuantity } = useCart(); 
+  const { handleRemoveFromCart } = useRemoveFromCart();
   const quantity = product.quantity ?? 1; 
 
   return (
@@ -23,7 +24,7 @@ const CartItem: React.FC<CartItemProps> = ({ product }) => {
         { quantity > 1 ? (
           <QuantityButton onClick={() => decreaseQuantity(product.id)}>-</QuantityButton>
         ) : (
-          <QuantityButton onClick={() => removeFromCart(product.id)}> 
+          <QuantityButton onClick={() => handleRemoveFromCart(product.id)}> 
           <FaTrash /> 
         </QuantityButton>
         )}

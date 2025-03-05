@@ -22,3 +22,15 @@ export const useAddToCart = () => {
 
   return { handleAddToCart };
 };
+
+export const useRemoveFromCart = () => {
+  const { removeFromCart } = useCart();
+  const { showToast } = useToast();
+
+  const handleRemoveFromCart = (id: number) => {
+    removeFromCart(id);
+    showToast("Producto eliminado del carrito ❌", "error");
+  };
+
+  return { handleRemoveFromCart };
+};
