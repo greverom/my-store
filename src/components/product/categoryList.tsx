@@ -8,13 +8,14 @@ import { Container, Title } from "../../styles/shopping.style";
 import { ProductListContainer, ProductCardContainer, ProductImageWrapper, 
          ProductImage, ProductTitle, ProductPrice, ProductInfo, CartIconWrapper 
         } from "../../styles/product.style";
+import { useAddToCart } from "../../hooks/Cart/useCart";
 
 const Categories = () => {
-  const [searchParams] = useSearchParams();
-  const categoryName = searchParams.get("name");
-
+  const { isModalOpen, selectedProduct, handleOpenModal, handleCloseModal } = useProductModal();
+  const [ searchParams] = useSearchParams();
+  const   categoryName = searchParams.get("name");
   const { products, loading, error } = useProductsByCategory(categoryName || "");
-  const { isModalOpen, selectedProduct, handleOpenModal, handleCloseModal, handleAddToCart } = useProductModal();
+  const { handleAddToCart } = useAddToCart();
 
   return (
     <>

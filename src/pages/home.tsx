@@ -1,7 +1,6 @@
 import { HomeContainer, Subtitle } from "../styles/home.style";
 import { Title } from "../styles/shopping.style";
 
-
 const Home = () => {
   return (
     <HomeContainer>

@@ -5,7 +5,6 @@ import { CartContext } from "./cartContext";
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<Product[]>([]);
 
-  // Agregar producto al carrito o incrementar cantidad si ya existe
   const addToCart = (product: Product) => {
     setCart((prevCart) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
@@ -20,7 +19,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  // Incrementar cantidad de un producto en el carrito
   const increaseQuantity = (id: number) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
@@ -29,7 +27,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-// Disminuir cantidad de un producto, si llega a 1 lo elimina
 const decreaseQuantity = (id: number) => {
     setCart((prevCart) =>
       prevCart
@@ -40,7 +37,6 @@ const decreaseQuantity = (id: number) => {
   );
 };
 
-// Remover un producto completamente del carrito
   const removeFromCart = (id: number) => {
     setCart((prevCart) => prevCart.filter((product) => product.id !== id));
 };
