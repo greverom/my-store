@@ -7,7 +7,7 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const showToast: ToastContextType["showToast"] = (message, type) => {
     setToast({ message, type });
-    setTimeout(() => setToast(null), 1800); 
+    setTimeout(() => setToast(null), 1000); 
   };
 
   return (

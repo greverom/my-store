@@ -29,7 +29,7 @@ export const useRemoveFromCart = () => {
 
   const handleRemoveFromCart = (id: number) => {
     removeFromCart(id);
-    showToast("Producto eliminado del carrito ❌", "error");
+    showToast("Producto eliminado del carrito", "error");
   };
 
   return { handleRemoveFromCart };

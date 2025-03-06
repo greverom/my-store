@@ -21,11 +21,6 @@ export interface SidebarLink {
     //   icon: ShoppingIcon,
     // },
     {
-      title: "Carrito",
-      path: "/cart",
-      icon: CartIcon, 
-    },
-    {
       title: "Productos",
       path: "/categories",
       icon: ShoppingIcon,
@@ -57,7 +52,11 @@ export interface SidebarLink {
         }
       ],
     },
-
+    {
+      title: "Carrito",
+      path: "/cart",
+      icon: CartIcon, 
+    },
     {
       title: "Salir",
       path: "#", 
