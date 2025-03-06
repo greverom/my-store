@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { HomeContainer, SubtitleContainer, Title } from "../styles/home.style";
+import { HomeContainer, ScrollingText, SubtitleContainer, Title } from "../styles/home.style";
 
 import { useGsapTitle } from "../hooks/animation/useGsapTitle";
 
@@ -13,14 +13,15 @@ const Home = () => {
 
   return (
     <HomeContainer>
-      <Title ref={titleRef}>🛍️ Bienvenido a la Tienda 🛍️</Title>
-      <SubtitleContainer>
-        <div ref={subtitleRef} className="scroll-text">
-           <span>{subtitleText}</span>
-           <span>{subtitleText}</span> 
-        </div>
-      </SubtitleContainer>
-    </HomeContainer>
+    <Title ref={titleRef}>🛍️ Bienvenido a la Tienda 🛍️</Title>
+    <SubtitleContainer>
+      <ScrollingText ref={subtitleRef}>
+        <span>{subtitleText}</span>
+        <span>{subtitleText}</span>
+        <span>{subtitleText}</span>
+      </ScrollingText>
+    </SubtitleContainer>
+  </HomeContainer>
   );
 };
 

@@ -16,8 +16,8 @@ export const useGsapTitle = (
 
 
     gsap.to(subtitleRef.current, {
-      x: "-181%", 
-      duration: 8,
+      x: "-70%", 
+      duration: 15,
       ease: "linear",
       repeat: -1, 
     });
