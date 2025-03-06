@@ -1,6 +1,6 @@
 import { useRef } from "react";
-import { HomeContainer, SubtitleContainer } from "../styles/home.style";
-import { Title } from "../styles/shopping.style";
+import { HomeContainer, SubtitleContainer, Title } from "../styles/home.style";
+
 import { useGsapTitle } from "../hooks/animation/useGsapTitle";
 
 const Home = () => {

@@ -6,12 +6,11 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; 
   text-align: center;
 `;
 
 export const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #007bff;
 `;
 
@@ -21,12 +20,12 @@ export const SubtitleContainer = styled.div`
   max-width: 400px; 
   overflow: hidden; 
   font-size: 1.5rem;
-  font-weight: bold;
+
   
   .scroll-text {
     display: flex;
     white-space: nowrap;
-    gap: 50px; 
+
   }
 `;
 

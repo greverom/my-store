@@ -4,7 +4,6 @@ export const GlobalStyles = createGlobalStyle`
   html, body {
   margin: 0;
   padding: 0;
-  color: white;
   min-height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -24,6 +23,6 @@ export const Content = styled.div`
   margin: 0;
   box-sizing: border-box;
   min-height: 100vh;
-  background: radial-gradient(circle,rgba(239, 248, 255, 0.5) 100%,rgba(255, 255, 255, 0.88) 100%);
+  background: radial-gradient(circle,rgba(233, 242, 250, 0.5) 100%,rgba(255, 255, 255, 0.88) 100%);
   overflow-x: auto;
 `;
