@@ -8,6 +8,26 @@ export const ProductListContainer = styled.div`
   margin-top: 3rem;
 `;
 
+export const ProductTitle = styled.h3`
+   font-size: 13px;
+  margin: 10px 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+
+  div {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    transition: max-width 0.3s ease, overflow 0.3s ease;
+  }
+`;
+
 export const ProductCardContainer = styled.div`
   display: flex;
   background: white;
@@ -25,6 +45,13 @@ export const ProductCardContainer = styled.div`
   &:hover {
     transform: scale(1.02);
   }
+
+   &:hover ${ProductTitle} div {
+    overflow: visible; 
+    text-overflow: clip; 
+    max-width: none; 
+  }
+    
 `;
 
 export const ProductImageWrapper = styled.div`
@@ -41,15 +68,7 @@ export const ProductImage = styled.img`
   object-fit: contain;
 `;
 
-export const ProductTitle = styled.h3`
-  font-size: 13px;
-  margin: 10px 0;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1; 
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-`;
+
 
 export const ProductInfo = styled.div`
   display: flex;
