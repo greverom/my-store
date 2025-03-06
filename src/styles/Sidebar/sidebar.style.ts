@@ -24,7 +24,8 @@ export const SidebarContainer = styled.div<{ $isOpen: boolean; $isDesktopExpande
   background-color: ${theme.sidebarBg};
   box-shadow: ${theme.sidebarShadow};
   backdrop-filter: blur(15px);
-  transition: all 0.7s;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+            left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 9;
 
   @media (min-width: 768px) {

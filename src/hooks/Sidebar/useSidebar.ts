@@ -74,6 +74,13 @@ export const useSidebar = () => {
     }, 200);
   };
 
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setIsSidebarOpen(false);
+      setOpenDropdown(null);
+    }
+  };
+
   return {
     isSidebarOpen,
     setIsSidebarOpen,
@@ -87,5 +94,6 @@ export const useSidebar = () => {
     handleMouseEnter,
     handleMouseLeave,
     handleOpenSidebar, 
+    handleLinkClick
   };
 };

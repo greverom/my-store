@@ -7,7 +7,7 @@ import { SidebarContainer, SidebarNav, LogoContainer, SidebarMenu, SidebarItem, 
 
 export const Sidebar = () => {
   const { isSidebarOpen, isMobile, dropdownRefs, handleOpenSidebar, isSidebarExpanded, sidebarRef,
-          handleMouseEnter, handleMouseLeave, openDropdown, toggleSubMenu, closeSubMenu, } = useSidebar();
+  handleMouseEnter, handleMouseLeave, openDropdown, toggleSubMenu, closeSubMenu, handleLinkClick, } = useSidebar();
   const { pathname }      = useLocation();
   const [ searchParams]   = useSearchParams();
   const   categoryName    = searchParams.get("name");
@@ -60,7 +60,7 @@ export const Sidebar = () => {
                                   <NavLink
                                     to={subLink.path}
                                     className={isSubmenuActive ? "nav-active" : ""}
-                                    onClick={() => closeSubMenu()}
+                                    onClick={() => { closeSubMenu(); handleLinkClick() } }
                                   >
                                     {subLink.title}
                                   </NavLink>
@@ -70,7 +70,7 @@ export const Sidebar = () => {
                           </Submenu>
                       </>
                     ) : (
-                      <SidebarLinkStyle to={ link.path } className={({ isActive }) => (isActive ? "active" : "")} $isOpen={ isSidebarOpen }>
+                      <SidebarLinkStyle to={ link.path } className={({ isActive }) => (isActive ? "active" : "")} onClick={handleLinkClick} $isOpen={ isSidebarOpen }>
                         <Icon /> 
                         <span>{link.title}</span>
                       </SidebarLinkStyle>
