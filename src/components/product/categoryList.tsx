@@ -23,10 +23,11 @@ const Categories = () => {
   const error = categoryName ? categoryProducts.error : allProducts.error;
   
   const { handleAddToCart } = useAddToCart();
+ 
 
   return (
     <>
-      <Container>
+     <Container>
         <Title>{categoryName ? categoryName.toUpperCase() : ""}</Title>
         {loading && <Loading />}
         {!loading && !error && (
