@@ -15,11 +15,6 @@ export interface SidebarLink {
       path: "/home",
       icon: HomeIcon,
     },
-    // {
-    //   title: "Shopping",
-    //   path: "/shopping",
-    //   icon: ShoppingIcon,
-    // },
     {
       title: "Productos",
       path: "/categories",
