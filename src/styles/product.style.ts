@@ -5,6 +5,7 @@ export const ProductListContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 30px;
   padding: 20px auto;
+  margin-top: 3rem;
 `;
 
 export const ProductCardContainer = styled.div`

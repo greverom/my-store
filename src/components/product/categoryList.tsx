@@ -9,18 +9,25 @@ import { ProductListContainer, ProductCardContainer, ProductImageWrapper,
          ProductImage, ProductTitle, ProductPrice, ProductInfo, CartIconWrapper 
         } from "../../styles/product.style";
 import { useAddToCart } from "../../hooks/Cart/useCart";
+import useProducts from "../../hooks/Product/useProducts";
 
 const Categories = () => {
   const { isModalOpen, selectedProduct, handleOpenModal, handleCloseModal } = useProductModal();
   const [ searchParams] = useSearchParams();
   const   categoryName = searchParams.get("name");
-  const { products, loading, error } = useProductsByCategory(categoryName || "");
+  const allProducts = useProducts();
+
+  const categoryProducts = useProductsByCategory(categoryName || "");
+  const products = categoryName ? categoryProducts.products : allProducts.products;
+  const loading = categoryName ? categoryProducts.loading : allProducts.loading;
+  const error = categoryName ? categoryProducts.error : allProducts.error;
+  
   const { handleAddToCart } = useAddToCart();
 
   return (
     <>
       <Container>
-        <Title>{categoryName ? categoryName.toUpperCase() : "Todas las Categorías"}</Title>
+        <Title>{categoryName ? categoryName.toUpperCase() : ""}</Title>
         {loading && <Loading />}
         {!loading && !error && (
           <ProductListContainer>

@@ -6,7 +6,7 @@ export const HomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Ocupa toda la pantalla */
+  height: 100vh; 
   text-align: center;
 `;
 
@@ -15,9 +15,18 @@ export const Title = styled.h1`
   color: #007bff;
 `;
 
-export const Subtitle = styled.p`
-  font-size: 1.2rem;
-  color: #555;
-  margin-top: 10px;
+export const SubtitleContainer = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 400px; 
+  overflow: hidden; 
+  font-size: 1.5rem;
+  font-weight: bold;
+  
+  .scroll-text {
+    display: flex;
+    white-space: nowrap;
+    gap: 50px; 
+  }
 `;
 

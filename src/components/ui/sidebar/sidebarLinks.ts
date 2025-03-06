@@ -15,21 +15,26 @@ export interface SidebarLink {
       path: "/home",
       icon: HomeIcon,
     },
-    {
-      title: "Shopping",
-      path: "/shopping",
-      icon: ShoppingIcon,
-    },
+    // {
+    //   title: "Shopping",
+    //   path: "/shopping",
+    //   icon: ShoppingIcon,
+    // },
     {
       title: "Carrito",
       path: "/cart",
       icon: CartIcon, 
     },
     {
-      title: "Categorías",
+      title: "Productos",
       path: "/categories",
       icon: ShoppingIcon,
       subMenu: [
+        {
+          title: "todo",
+          path: "/categories",  
+          icon: ShoppingIcon,
+        },
         {
           title: "Electronics",
           path: "/categories?name=electronics",

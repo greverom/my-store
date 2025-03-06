@@ -17,15 +17,14 @@ export const theme = {
 
 export const SidebarContainer = styled.div<{ $isOpen: boolean; $isDesktopExpanded: boolean }>`
   position: fixed;
-  left: ${({ $isOpen }) => ($isOpen ? "0" : "-280px")}; 
+  left: ${({ $isOpen }) => ($isOpen ? "0" : "-480px")}; 
   top: 0;
   bottom: 0;
   width: 275px;
   background-color: ${theme.sidebarBg};
   box-shadow: ${theme.sidebarShadow};
   backdrop-filter: blur(15px);
-  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-            left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.6s;
   z-index: 9;
 
   @media (min-width: 768px) {
@@ -38,7 +37,7 @@ export const SidebarContainer = styled.div<{ $isOpen: boolean; $isDesktopExpande
   }
 
   @media (max-width: 768px) {
-    left: ${({ $isOpen }) => ($isOpen ? "0" : "-280px")};
+    left: ${({ $isOpen }) => ($isOpen ? "0" : "-500px")};
 
     &:hover {
       width: ${({ $isOpen }) => ($isOpen ? "275px" : "0")}; 

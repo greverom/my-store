@@ -53,13 +53,16 @@ export const Sidebar = () => {
 
                           <Submenu $isOpen={isOpen}>
                             {link.subMenu.map((subLink, subIndex) => {
+
+                              const isInCategoriesPage = pathname.startsWith("/categories");
+                              const isAllCategoriesActive = isInCategoriesPage && !categoryName;
                               const isSubmenuActive = categoryName === subLink.path.split("=")[1]; 
 
                               return (
                                 <li key={subIndex}>
                                   <NavLink
                                     to={subLink.path}
-                                    className={isSubmenuActive ? "nav-active" : ""}
+                                    className={isSubmenuActive || isAllCategoriesActive ? "nav-active" : ""}
                                     onClick={() => { closeSubMenu(); handleLinkClick() } }
                                   >
                                     {subLink.title}
