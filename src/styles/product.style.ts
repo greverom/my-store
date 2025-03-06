@@ -51,7 +51,6 @@ export const ProductCardContainer = styled.div`
     text-overflow: clip; 
     max-width: none; 
   }
-    
 `;
 
 export const ProductImageWrapper = styled.div`
@@ -67,8 +66,6 @@ export const ProductImage = styled.img`
   height: 100%;
   object-fit: contain;
 `;
-
-
 
 export const ProductInfo = styled.div`
   display: flex;

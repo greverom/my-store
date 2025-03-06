@@ -3,7 +3,7 @@ import { useProductsByCategory } from "../../hooks/Product/useProductByCategory"
 import { useProductModal } from "../../hooks/Product/useProductModal";
 import ProductDetailModal from "./productDeatilModal";
 import Loading from "../ui/loading";
-import { Container, Title } from "../../styles/shopping.style"; 
+import { Title } from "../../styles/shopping.style"; 
 import { ProductListContainer } from "../../styles/product.style";
 import { useAddToCart } from "../../hooks/Cart/useCart";
 import useProducts from "../../hooks/Product/useProducts";
@@ -23,10 +23,11 @@ const Categories = () => {
 
   return (
     <>
-      <Container>
         <Title>{categoryName ? categoryName.toUpperCase() : ""}</Title>
+
         {loading && <Loading />}
         {!loading && !error && (
+
           <ProductListContainer>
             {products.map((product) => (
               <ProductCard 
@@ -37,7 +38,6 @@ const Categories = () => {
             ))}
           </ProductListContainer>
         )}
-      </Container>
 
       <ProductDetailModal 
         isOpen={isModalOpen} 
