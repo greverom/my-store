@@ -2,11 +2,11 @@ import { Suspense } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Content, MainLayout } from "../../styles/Layout/layout.styles";
 import   Loading from "../ui/loading";
-import   Sidebar from "../ui/sidebar/sidebar";
 import { appRoutes } from "../../router/routes";
 import { AppRoute } from "../../router/type";
 import { CartProvider } from "../../context/cart/cartProvider";
 import { ToastProvider } from "../../context/Toast/toastProvider";
+import { Navbar } from "../ui/navbar/navbar";
 
 export const Layout = () => {
   return (
@@ -14,8 +14,7 @@ export const Layout = () => {
       <ToastProvider>
         <MainLayout>
 
-          <Sidebar /> 
-
+          <Navbar />
           <Content>
             <Suspense fallback={<Loading />}>
               <Routes>
