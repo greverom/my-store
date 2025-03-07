@@ -6,7 +6,8 @@ import { appRoutes } from "../../router/routes";
 import { AppRoute } from "../../router/type";
 import { CartProvider } from "../../context/cart/cartProvider";
 import { ToastProvider } from "../../context/Toast/toastProvider";
-import { Navbar } from "../ui/navbar/navbar";
+import   Navbar from "../ui/navbar/navbar";
+
 
 export const Layout = () => {
   return (
